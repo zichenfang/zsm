@@ -8,24 +8,58 @@
 
 /* Begin PBXBuildFile section */
 		AEC85271207CDD02008EBE06 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC85270207CDD02008EBE06 /* AppDelegate.m */; };
-		AEC85274207CDD02008EBE06 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC85273207CDD02008EBE06 /* ViewController.m */; };
-		AEC85277207CDD02008EBE06 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEC85275207CDD02008EBE06 /* Main.storyboard */; };
 		AEC85279207CDD0A008EBE06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEC85278207CDD0A008EBE06 /* Assets.xcassets */; };
 		AEC8527C207CDD0A008EBE06 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEC8527A207CDD0A008EBE06 /* LaunchScreen.storyboard */; };
 		AEC8527F207CDD0A008EBE06 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC8527E207CDD0A008EBE06 /* main.m */; };
+		AEC852A2207CE06E008EBE06 /* NSDate+MyDate.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC85289207CE06D008EBE06 /* NSDate+MyDate.m */; };
+		AEC852A3207CE06E008EBE06 /* UIImage+MyCustomImage.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC8528B207CE06D008EBE06 /* UIImage+MyCustomImage.m */; };
+		AEC852A4207CE06E008EBE06 /* NSString+MyCustomString.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC8528C207CE06D008EBE06 /* NSString+MyCustomString.m */; };
+		AEC852A6207CE06E008EBE06 /* UIColor+MyColor.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC8528E207CE06D008EBE06 /* UIColor+MyColor.m */; };
+		AEC852A7207CE06E008EBE06 /* TTRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC85291207CE06D008EBE06 /* TTRequestOperationManager.m */; };
+		AEC852A8207CE06E008EBE06 /* TTUserInfoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC85292207CE06D008EBE06 /* TTUserInfoManager.m */; };
+		AEC852AB207CE06E008EBE06 /* TTBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC8529E207CE06D008EBE06 /* TTBaseViewController.m */; };
+		AEC852AF207CE126008EBE06 /* RootWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEC852AC207CE126008EBE06 /* RootWebViewController.xib */; };
+		AEC852B0207CE126008EBE06 /* RootWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC852AD207CE126008EBE06 /* RootWebViewController.m */; };
+		AEC852B4207CE188008EBE06 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC852B2207CE188008EBE06 /* LoginViewController.m */; };
+		AEC852B5207CE188008EBE06 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEC852B3207CE188008EBE06 /* LoginViewController.xib */; };
+		AEC852B8207CEA1A008EBE06 /* UIViewController+MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC852B7207CEA1A008EBE06 /* UIViewController+MyViewController.m */; };
+		B6F16C0CD96670DF47323916 /* libPods-臻饰美.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FDB7BAF23D113C613CB2ADCA /* libPods-臻饰美.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8CB10619ACE51192800356AC /* Pods-臻饰美.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-臻饰美.release.xcconfig"; path = "Pods/Target Support Files/Pods-臻饰美/Pods-臻饰美.release.xcconfig"; sourceTree = "<group>"; };
+		9BF839C99469377E22349313 /* Pods-臻饰美.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-臻饰美.debug.xcconfig"; path = "Pods/Target Support Files/Pods-臻饰美/Pods-臻饰美.debug.xcconfig"; sourceTree = "<group>"; };
 		AEC8526C207CDD01008EBE06 /* 臻饰美.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "臻饰美.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEC8526F207CDD02008EBE06 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AEC85270207CDD02008EBE06 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		AEC85272207CDD02008EBE06 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		AEC85273207CDD02008EBE06 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		AEC85276207CDD02008EBE06 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AEC85278207CDD0A008EBE06 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AEC8527B207CDD0A008EBE06 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AEC8527D207CDD0A008EBE06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AEC8527E207CDD0A008EBE06 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AEC85286207CE06D008EBE06 /* NSString+MyCustomString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MyCustomString.h"; sourceTree = "<group>"; };
+		AEC85287207CE06D008EBE06 /* UIImage+MyCustomImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+MyCustomImage.h"; sourceTree = "<group>"; };
+		AEC85289207CE06D008EBE06 /* NSDate+MyDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+MyDate.m"; sourceTree = "<group>"; };
+		AEC8528A207CE06D008EBE06 /* UIColor+MyColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+MyColor.h"; sourceTree = "<group>"; };
+		AEC8528B207CE06D008EBE06 /* UIImage+MyCustomImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+MyCustomImage.m"; sourceTree = "<group>"; };
+		AEC8528C207CE06D008EBE06 /* NSString+MyCustomString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MyCustomString.m"; sourceTree = "<group>"; };
+		AEC8528E207CE06D008EBE06 /* UIColor+MyColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+MyColor.m"; sourceTree = "<group>"; };
+		AEC8528F207CE06D008EBE06 /* NSDate+MyDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+MyDate.h"; sourceTree = "<group>"; };
+		AEC85291207CE06D008EBE06 /* TTRequestOperationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTRequestOperationManager.m; sourceTree = "<group>"; };
+		AEC85292207CE06D008EBE06 /* TTUserInfoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTUserInfoManager.m; sourceTree = "<group>"; };
+		AEC85293207CE06D008EBE06 /* TTVenderHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTVenderHeader.h; sourceTree = "<group>"; };
+		AEC85294207CE06D008EBE06 /* TTRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTRequestOperationManager.h; sourceTree = "<group>"; };
+		AEC85295207CE06D008EBE06 /* TTUserInfoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTUserInfoManager.h; sourceTree = "<group>"; };
+		AEC8529A207CE06D008EBE06 /* TTBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTBaseViewController.h; sourceTree = "<group>"; };
+		AEC8529E207CE06D008EBE06 /* TTBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTBaseViewController.m; sourceTree = "<group>"; };
+		AEC852AC207CE126008EBE06 /* RootWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootWebViewController.xib; sourceTree = "<group>"; };
+		AEC852AD207CE126008EBE06 /* RootWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootWebViewController.m; sourceTree = "<group>"; };
+		AEC852AE207CE126008EBE06 /* RootWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootWebViewController.h; sourceTree = "<group>"; };
+		AEC852B1207CE188008EBE06 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		AEC852B2207CE188008EBE06 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		AEC852B3207CE188008EBE06 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		AEC852B6207CEA1A008EBE06 /* UIViewController+MyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+MyViewController.h"; path = "../../PointsForShop/category/UIViewController+MyViewController.h"; sourceTree = "<group>"; };
+		AEC852B7207CEA1A008EBE06 /* UIViewController+MyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+MyViewController.m"; path = "../../PointsForShop/category/UIViewController+MyViewController.m"; sourceTree = "<group>"; };
+		FDB7BAF23D113C613CB2ADCA /* libPods-臻饰美.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-臻饰美.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +67,32 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6F16C0CD96670DF47323916 /* libPods-臻饰美.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5DBC46957736502D1C087A1D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9BF839C99469377E22349313 /* Pods-臻饰美.debug.xcconfig */,
+				8CB10619ACE51192800356AC /* Pods-臻饰美.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		AEC85263207CDD01008EBE06 = {
 			isa = PBXGroup;
 			children = (
+				AEC85285207CE06D008EBE06 /* category */,
+				AEC85296207CE06D008EBE06 /* controller */,
+				AEC85290207CE06D008EBE06 /* vender */,
 				AEC8526E207CDD01008EBE06 /* 臻饰美 */,
 				AEC8526D207CDD01008EBE06 /* Products */,
+				5DBC46957736502D1C087A1D /* Pods */,
+				D9ACB2776E9F4E5E084D3A79 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,15 +109,72 @@
 			children = (
 				AEC8526F207CDD02008EBE06 /* AppDelegate.h */,
 				AEC85270207CDD02008EBE06 /* AppDelegate.m */,
-				AEC85272207CDD02008EBE06 /* ViewController.h */,
-				AEC85273207CDD02008EBE06 /* ViewController.m */,
-				AEC85275207CDD02008EBE06 /* Main.storyboard */,
 				AEC85278207CDD0A008EBE06 /* Assets.xcassets */,
 				AEC8527A207CDD0A008EBE06 /* LaunchScreen.storyboard */,
 				AEC8527D207CDD0A008EBE06 /* Info.plist */,
 				AEC8527E207CDD0A008EBE06 /* main.m */,
 			);
 			path = "臻饰美";
+			sourceTree = "<group>";
+		};
+		AEC85285207CE06D008EBE06 /* category */ = {
+			isa = PBXGroup;
+			children = (
+				AEC852B6207CEA1A008EBE06 /* UIViewController+MyViewController.h */,
+				AEC852B7207CEA1A008EBE06 /* UIViewController+MyViewController.m */,
+				AEC85286207CE06D008EBE06 /* NSString+MyCustomString.h */,
+				AEC8528C207CE06D008EBE06 /* NSString+MyCustomString.m */,
+				AEC85287207CE06D008EBE06 /* UIImage+MyCustomImage.h */,
+				AEC8528B207CE06D008EBE06 /* UIImage+MyCustomImage.m */,
+				AEC85289207CE06D008EBE06 /* NSDate+MyDate.m */,
+				AEC8528A207CE06D008EBE06 /* UIColor+MyColor.h */,
+				AEC8528E207CE06D008EBE06 /* UIColor+MyColor.m */,
+				AEC8528F207CE06D008EBE06 /* NSDate+MyDate.h */,
+			);
+			path = category;
+			sourceTree = "<group>";
+		};
+		AEC85290207CE06D008EBE06 /* vender */ = {
+			isa = PBXGroup;
+			children = (
+				AEC85293207CE06D008EBE06 /* TTVenderHeader.h */,
+				AEC85295207CE06D008EBE06 /* TTUserInfoManager.h */,
+				AEC85292207CE06D008EBE06 /* TTUserInfoManager.m */,
+				AEC85294207CE06D008EBE06 /* TTRequestOperationManager.h */,
+				AEC85291207CE06D008EBE06 /* TTRequestOperationManager.m */,
+			);
+			path = vender;
+			sourceTree = "<group>";
+		};
+		AEC85296207CE06D008EBE06 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				AEC85299207CE06D008EBE06 /* main */,
+				AEC852AE207CE126008EBE06 /* RootWebViewController.h */,
+				AEC852AD207CE126008EBE06 /* RootWebViewController.m */,
+				AEC852AC207CE126008EBE06 /* RootWebViewController.xib */,
+				AEC852B1207CE188008EBE06 /* LoginViewController.h */,
+				AEC852B2207CE188008EBE06 /* LoginViewController.m */,
+				AEC852B3207CE188008EBE06 /* LoginViewController.xib */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		AEC85299207CE06D008EBE06 /* main */ = {
+			isa = PBXGroup;
+			children = (
+				AEC8529A207CE06D008EBE06 /* TTBaseViewController.h */,
+				AEC8529E207CE06D008EBE06 /* TTBaseViewController.m */,
+			);
+			path = main;
+			sourceTree = "<group>";
+		};
+		D9ACB2776E9F4E5E084D3A79 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FDB7BAF23D113C613CB2ADCA /* libPods-臻饰美.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -78,9 +184,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AEC85282207CDD0A008EBE06 /* Build configuration list for PBXNativeTarget "臻饰美" */;
 			buildPhases = (
+				EF6D89BFB045F5FC232B61B7 /* [CP] Check Pods Manifest.lock */,
 				AEC85268207CDD01008EBE06 /* Sources */,
 				AEC85269207CDD01008EBE06 /* Frameworks */,
 				AEC8526A207CDD01008EBE06 /* Resources */,
+				04DFB123FDC27F4983A48A2F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -128,36 +236,77 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEC852B5207CE188008EBE06 /* LoginViewController.xib in Resources */,
 				AEC8527C207CDD0A008EBE06 /* LaunchScreen.storyboard in Resources */,
+				AEC852AF207CE126008EBE06 /* RootWebViewController.xib in Resources */,
 				AEC85279207CDD0A008EBE06 /* Assets.xcassets in Resources */,
-				AEC85277207CDD02008EBE06 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		04DFB123FDC27F4983A48A2F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-臻饰美/Pods-臻饰美-resources.sh",
+				"${PODS_ROOT}/ProgressHUD/ProgressHUD/ProgressHUD/ProgressHUD.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ProgressHUD.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-臻饰美/Pods-臻饰美-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EF6D89BFB045F5FC232B61B7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-臻饰美-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		AEC85268207CDD01008EBE06 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AEC85274207CDD02008EBE06 /* ViewController.m in Sources */,
+				AEC852AB207CE06E008EBE06 /* TTBaseViewController.m in Sources */,
+				AEC852B0207CE126008EBE06 /* RootWebViewController.m in Sources */,
+				AEC852B4207CE188008EBE06 /* LoginViewController.m in Sources */,
+				AEC852A2207CE06E008EBE06 /* NSDate+MyDate.m in Sources */,
+				AEC852A6207CE06E008EBE06 /* UIColor+MyColor.m in Sources */,
+				AEC852A8207CE06E008EBE06 /* TTUserInfoManager.m in Sources */,
+				AEC852A7207CE06E008EBE06 /* TTRequestOperationManager.m in Sources */,
+				AEC852A3207CE06E008EBE06 /* UIImage+MyCustomImage.m in Sources */,
+				AEC852B8207CEA1A008EBE06 /* UIViewController+MyViewController.m in Sources */,
 				AEC8527F207CDD0A008EBE06 /* main.m in Sources */,
 				AEC85271207CDD02008EBE06 /* AppDelegate.m in Sources */,
+				AEC852A4207CE06E008EBE06 /* NSString+MyCustomString.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		AEC85275207CDD02008EBE06 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AEC85276207CDD02008EBE06 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		AEC8527A207CDD0A008EBE06 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -281,33 +430,39 @@
 		};
 		AEC85283207CDD0A008EBE06 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9BF839C99469377E22349313 /* Pods-臻饰美.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2D9E8Y6VW3;
 				INFOPLIST_FILE = "臻饰美/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "FFF.---";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		AEC85284207CDD0A008EBE06 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8CB10619ACE51192800356AC /* Pods-臻饰美.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2D9E8Y6VW3;
 				INFOPLIST_FILE = "臻饰美/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "FFF.---";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

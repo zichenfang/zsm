@@ -7,6 +7,14 @@
 //
 
 #import "AppDelegate.h"
+#import "LoginViewController.h"
+#import "RootWebViewController.h"
+// 引入JPush功能所需头文件
+#import "JPUSHService.h"
+// iOS10注册APNs所需头文件
+#ifdef NSFoundationVersionNumber_iOS_9_x_Max
+#import <UserNotifications/UserNotifications.h>
+#endif
 
 @interface AppDelegate ()
 
@@ -16,36 +24,84 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    [self.window makeKeyAndVisible];
+    if ([TTUserInfoManager logined] == YES) {
+        RootWebViewController *mainVC = [[RootWebViewController alloc] init];
+        self.window.rootViewController = mainVC;
+    }
+    else{
+        LoginViewController *mainVC = [[LoginViewController alloc] init];
+        self.window.rootViewController = mainVC;
+    }
+    [self starNetWorkObservWithOptions:launchOptions];
     return YES;
 }
-
-
-- (void)applicationWillResignActive:(UIApplication *)application {
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+- (void)starNetWorkObservWithOptions:(NSDictionary *)launchOptions{
+    AFNetworkReachabilityManager *netManager = [AFNetworkReachabilityManager sharedManager];
+    [netManager startMonitoring];  //开始监听
+    [netManager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status){
+        if (status == AFNetworkReachabilityStatusNotReachable){
+            NSLog(@"网络链接错误,请检查网络链接");
+            return;
+        }else if (status == AFNetworkReachabilityStatusUnknown){
+            NSLog(@"未知网络");
+        }else if (status == AFNetworkReachabilityStatusReachableViaWWAN||status == AFNetworkReachabilityStatusReachableViaWiFi){
+            NSLog(@"WAN WIFI");
+//            [self prepareAPNs];
+//            [self prepareJPushWithOptions:launchOptions];
+        }
+    }];
 }
-
-
-- (void)applicationDidEnterBackground:(UIApplication *)application {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+//MARK:添加初始化APNs代码
+- (void)prepareAPNs{
+    JPUSHRegisterEntity * entity = [[JPUSHRegisterEntity alloc] init];
+    entity.types = JPAuthorizationOptionAlert|JPAuthorizationOptionSound;
+    [JPUSHService registerForRemoteNotificationConfig:entity delegate:nil];
 }
-
-
-- (void)applicationWillEnterForeground:(UIApplication *)application {
-    // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+//MARK:初始化JPush代码
+- (void)prepareJPushWithOptions:(NSDictionary *)launchOptions {
+    // 如需继续使用pushConfig.plist文件声明appKey等配置内容，请依旧使用[JPUSHService setupWithOption:launchOptions]方式初始化。
+    [JPUSHService setupWithOption:launchOptions appKey:@"ad4193fb8db76ad975194754"
+                          channel:@"1"
+                 apsForProduction:0
+            advertisingIdentifier:nil];
+    [JPUSHService registrationIDCompletionHandler:^(int resCode, NSString *registrationID) {
+        if(resCode == 0){
+            NSLog(@"registrationID获取成功：%@",registrationID);
+            [TTUserInfoManager setJPUSHRegistID:registrationID];
+        }
+        else{
+            NSLog(@"registrationID获取失败，code：%d",resCode);
+        }
+    }];
+    
 }
-
-
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+//MARK:DeviceToken
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    /// Required - 注册 DeviceToken
+    NSMutableString *deviceTokenStr = [NSMutableString string];
+    const char *bytes = deviceToken.bytes;
+    int iCount = (int)deviceToken.length;
+    for (int i = 0; i < iCount; i++) {
+        [deviceTokenStr appendFormat:@"%02x", bytes[i]&0x000000FF];
+    }
+    NSLog(@"方式1：%@", deviceTokenStr);
+    [JPUSHService registerDeviceToken:deviceToken];
+    if (deviceTokenStr) {
+        [TTUserInfoManager setAPNsDeviceToken:deviceTokenStr];
+    }
+    
 }
-
-
-- (void)applicationWillTerminate:(UIApplication *)application {
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    //Optional
+    NSLog(@"did Fail To Register For Remote Notifications With Error: %@", error);
 }
-
+//MARK:处理APNs通知回调方法
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    // Required, iOS 7 Support
+    [JPUSHService handleRemoteNotification:userInfo];
+    completionHandler(UIBackgroundFetchResultNewData);
+}
 
 @end
