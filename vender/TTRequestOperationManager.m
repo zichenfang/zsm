@@ -39,7 +39,6 @@
         mySuccess(cacheDic.noNullObject);
 
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [ProgressHUD showError:@"网络连接错误，请确定您已连接到互联网"];
         NSLog(@"%@",error);
         myFailure(error);
     }];
@@ -59,7 +58,6 @@
         NSLog(@"URLString =%@ \n parameters =%@ \n %@ 's cacheDic  =%@\n ",URLString,parameters,[parameters string_ForKey:@"method"],cacheDic);
         mySuccess(cacheDic.noNullObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [ProgressHUD showError:@"网络连接错误，请确定您已连接到互联网"];
         NSLog(@"%@",error);
         myFailure(error);
     }];
@@ -84,7 +82,6 @@
         NSLog(@"URLString =%@ \n parameters =%@ \n %@ 's cacheDic  =%@\n ",URLString,parameters,[parameters string_ForKey:@"method"],cacheDic);
         mySuccess(cacheDic.noNullObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [ProgressHUD showError:@"网络连接错误，请确定您已连接到互联网"];
         NSLog(@"%@",error);
         myFailure(error);
     }];

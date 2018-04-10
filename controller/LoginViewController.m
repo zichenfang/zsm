@@ -27,26 +27,26 @@
 - (IBAction)getCode:(id)sender {
     NSString *phone =[[self.phoneTF.text stringByReplacingOccurrencesOfString:@" " withString:@""] stringByReplacingOccurrencesOfString:@"-" withString:@""];
     if ([phone isValidateMobile] !=YES) {
-        [ProgressHUD showError:@"请输入正确的手机号" Interaction:NO];
+        [self.view makeToast:@"请输入正确的手机号"];
         return;
     }
     NSMutableDictionary *para = [NSMutableDictionary dictionaryWithCapacity:1];
     [para setObject:phone forKey:@"phone"];
     [ProgressHUD show:nil Interaction:NO];
     [TTRequestOperationManager GET:API_USER_SEND_CODE Parameters:para Success:^(NSDictionary *responseJsonObject) {
+        [ProgressHUD dismiss];
         NSString *code = [responseJsonObject string_ForKey:@"code"];
         NSString *msg = [responseJsonObject string_ForKey:@"msg"];
+        [self.view makeToast:msg];
         if ([code isEqualToString:@"200"])//
         {
             [self startTimeLimit];
-            [ProgressHUD showSuccess:msg Interaction:NO];
-        }
-        else{
-            [ProgressHUD showError:msg Interaction:NO];
         }
         
     } Failure:^(NSError *error) {
-        [ProgressHUD showError:@"网络请求错误" Interaction:NO];
+        [ProgressHUD dismiss];
+        [self.view makeToast:@"网络请求错误"];
+
     }];
     
 }
@@ -77,6 +77,16 @@
     dispatch_resume(_timer);
 }
 - (IBAction)registNow:(id)sender {
+    NSString *phone =[[self.phoneTF.text stringByReplacingOccurrencesOfString:@" " withString:@""] stringByReplacingOccurrencesOfString:@"-" withString:@""];
+    if ([phone isValidateMobile] !=YES) {
+        [self.view makeToast:@"请输入正确的手机号"];
+        return;
+    }
+    if (self.codeTF.text.length<4) {
+        [self.view makeToast:@"请输入正确的验证码"];
+        
+        return;
+    }
     [self presentAlertWithTitle:@"确认提交？" Handler:^{
         [self requestRegist];
     } Cancel:nil];
@@ -85,11 +95,12 @@
 - (void)requestRegist{
     NSString *phone =[[self.phoneTF.text stringByReplacingOccurrencesOfString:@" " withString:@""] stringByReplacingOccurrencesOfString:@"-" withString:@""];
     if ([phone isValidateMobile] !=YES) {
-        [ProgressHUD showError:@"请输入正确的手机号" Interaction:NO];
+        [self.view makeToast:@"请输入正确的手机号"];
         return;
     }
     if (self.codeTF.text.length<4) {
-        [ProgressHUD showError:@"请输入正确的验证码" Interaction:NO];
+        [self.view makeToast:@"请输入正确的验证码"];
+
         return;
     }
 
@@ -104,21 +115,23 @@
     }
     [ProgressHUD show:nil Interaction:NO];
     [TTRequestOperationManager GET:API_USER_LOGIN Parameters:para Success:^(NSDictionary *responseJsonObject) {
+        [ProgressHUD dismiss];
         NSString *code = [responseJsonObject string_ForKey:@"code"];
         NSString *msg = [responseJsonObject string_ForKey:@"msg"];
         NSDictionary *result = [responseJsonObject dictionary_ForKey:@"result"];
         if ([code isEqualToString:@"200"]) {
-            [ProgressHUD showSuccess:@"登录成功" Interaction:NO];
+            [self.view makeToast:@"登录成功"];
             [TTUserInfoManager setUserInfo:result];
             [TTUserInfoManager setLogined:YES];
             [TTUserInfoManager setAccount:phone];
             [self performSelector:@selector(registSuccess) withObject:nil afterDelay:1.5];
         }
         else{
-            [ProgressHUD showError:msg Interaction:NO];
+            [self.view makeToast:msg];
         }
     } Failure:^(NSError *error) {
-        [ProgressHUD showError:@"网络请求错误" Interaction:NO];
+        [ProgressHUD dismiss];
+        [self.view makeToast:@"网络请求错误"];
     }];
 }
 //注册成功之后，须登录操作

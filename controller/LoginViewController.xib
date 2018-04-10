@@ -30,7 +30,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3UR-nN-Ygk" userLabel="base info View">
-                                    <rect key="frame" x="25" y="50" width="325" height="420"/>
+                                    <rect key="frame" x="25" y="200" width="325" height="420"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dHW-l9-SDm" userLabel="line View 1">
                                             <rect key="frame" x="40" y="120" width="285" height="1"/>
@@ -148,12 +148,21 @@
                                         <constraint firstItem="t2m-c6-TtL" firstAttribute="top" secondItem="3UR-nN-Ygk" secondAttribute="top" constant="197" id="zun-rh-4gt"/>
                                     </constraints>
                                 </view>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="2RW-ve-FyQ">
+                                    <rect key="frame" x="137" y="70" width="100" height="100"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="100" id="27g-0Y-e15"/>
+                                        <constraint firstAttribute="width" constant="100" id="8Mm-nf-XW6"/>
+                                    </constraints>
+                                </imageView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="3UR-nN-Ygk" secondAttribute="trailing" constant="25" id="7r9-u4-zbn"/>
                                 <constraint firstItem="3UR-nN-Ygk" firstAttribute="leading" secondItem="cKw-Sr-Qab" secondAttribute="leading" constant="25" id="SDC-Fp-muP"/>
-                                <constraint firstItem="3UR-nN-Ygk" firstAttribute="top" secondItem="cKw-Sr-Qab" secondAttribute="top" constant="50" id="j1Q-gz-aJK"/>
+                                <constraint firstItem="3UR-nN-Ygk" firstAttribute="top" secondItem="cKw-Sr-Qab" secondAttribute="top" constant="200" id="j1Q-gz-aJK"/>
+                                <constraint firstItem="2RW-ve-FyQ" firstAttribute="centerX" secondItem="cKw-Sr-Qab" secondAttribute="centerX" id="tew-RN-CXZ"/>
+                                <constraint firstItem="2RW-ve-FyQ" firstAttribute="top" secondItem="cKw-Sr-Qab" secondAttribute="top" constant="70" id="zVA-QA-sFs"/>
                             </constraints>
                         </view>
                     </subviews>
@@ -180,5 +189,6 @@
     <resources>
         <image name="login_phone" width="12" height="22"/>
         <image name="login_verfycode" width="16" height="20"/>
+        <image name="logo" width="450" height="450"/>
     </resources>
 </document>

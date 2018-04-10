@@ -17,6 +17,7 @@
 #import "JsonKillNull.h"
 #import "ProgressHUD.h"
 #import "UIViewController+MyViewController.h"
+#import "Toast.h"
 
 typedef void (^TTBlock)(NSDictionary *info);
 
