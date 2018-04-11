@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TTVenderHeader.h"
 
 @interface RootWebViewController : UIViewController
 

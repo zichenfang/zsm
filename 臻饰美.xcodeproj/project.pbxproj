@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AE91E460207E56510015C27F /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AE91E45E207E56510015C27F /* AlipaySDK.bundle */; };
+		AE91E461207E56510015C27F /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE91E45F207E56510015C27F /* AlipaySDK.framework */; };
+		AE959175207E47F0006856C6 /* test.html in Resources */ = {isa = PBXBuildFile; fileRef = AE959174207E47F0006856C6 /* test.html */; };
 		AEC85271207CDD02008EBE06 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC85270207CDD02008EBE06 /* AppDelegate.m */; };
 		AEC85279207CDD0A008EBE06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEC85278207CDD0A008EBE06 /* Assets.xcassets */; };
 		AEC8527C207CDD0A008EBE06 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEC8527A207CDD0A008EBE06 /* LaunchScreen.storyboard */; };
@@ -29,6 +32,9 @@
 /* Begin PBXFileReference section */
 		8CB10619ACE51192800356AC /* Pods-臻饰美.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-臻饰美.release.xcconfig"; path = "Pods/Target Support Files/Pods-臻饰美/Pods-臻饰美.release.xcconfig"; sourceTree = "<group>"; };
 		9BF839C99469377E22349313 /* Pods-臻饰美.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-臻饰美.debug.xcconfig"; path = "Pods/Target Support Files/Pods-臻饰美/Pods-臻饰美.debug.xcconfig"; sourceTree = "<group>"; };
+		AE91E45E207E56510015C27F /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
+		AE91E45F207E56510015C27F /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
+		AE959174207E47F0006856C6 /* test.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = test.html; path = ../../../../Desktop/test.html; sourceTree = "<group>"; };
 		AEC8526C207CDD01008EBE06 /* 臻饰美.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "臻饰美.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEC8526F207CDD02008EBE06 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AEC85270207CDD02008EBE06 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -68,6 +74,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6F16C0CD96670DF47323916 /* libPods-臻饰美.a in Frameworks */,
+				AE91E461207E56510015C27F /* AlipaySDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,9 +90,20 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		AE91E45D207E56510015C27F /* alipay */ = {
+			isa = PBXGroup;
+			children = (
+				AE91E45E207E56510015C27F /* AlipaySDK.bundle */,
+				AE91E45F207E56510015C27F /* AlipaySDK.framework */,
+			);
+			name = alipay;
+			path = ../../../Desktop/alipay;
+			sourceTree = "<group>";
+		};
 		AEC85263207CDD01008EBE06 = {
 			isa = PBXGroup;
 			children = (
+				AE91E45D207E56510015C27F /* alipay */,
 				AEC85285207CE06D008EBE06 /* category */,
 				AEC85296207CE06D008EBE06 /* controller */,
 				AEC85290207CE06D008EBE06 /* vender */,
@@ -109,6 +127,7 @@
 			children = (
 				AEC8526F207CDD02008EBE06 /* AppDelegate.h */,
 				AEC85270207CDD02008EBE06 /* AppDelegate.m */,
+				AE959174207E47F0006856C6 /* test.html */,
 				AEC85278207CDD0A008EBE06 /* Assets.xcassets */,
 				AEC8527A207CDD0A008EBE06 /* LaunchScreen.storyboard */,
 				AEC8527D207CDD0A008EBE06 /* Info.plist */,
@@ -236,9 +255,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE91E460207E56510015C27F /* AlipaySDK.bundle in Resources */,
 				AEC852B5207CE188008EBE06 /* LoginViewController.xib in Resources */,
 				AEC8527C207CDD0A008EBE06 /* LaunchScreen.storyboard in Resources */,
 				AEC852AF207CE126008EBE06 /* RootWebViewController.xib in Resources */,
+				AE959175207E47F0006856C6 /* test.html in Resources */,
 				AEC85279207CDD0A008EBE06 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -434,14 +455,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2D9E8Y6VW3;
+				DEVELOPMENT_TEAM = U44QXKV53Z;
 				INFOPLIST_FILE = "臻饰美/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "FFF.---";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jt.zsm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -453,14 +474,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2D9E8Y6VW3;
+				DEVELOPMENT_TEAM = U44QXKV53Z;
 				INFOPLIST_FILE = "臻饰美/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "FFF.---";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jt.zsm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

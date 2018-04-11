@@ -7,6 +7,7 @@
 //
 
 #import "LoginViewController.h"
+#import "RootWebViewController.h"
 
 @interface LoginViewController ()
 @property (strong, nonatomic) IBOutlet UITextField *phoneTF;
@@ -84,25 +85,21 @@
     }
     if (self.codeTF.text.length<4) {
         [self.view makeToast:@"请输入正确的验证码"];
-        
         return;
     }
-    [self presentAlertWithTitle:@"确认提交？" Handler:^{
-        [self requestRegist];
-    } Cancel:nil];
-    
+    [self requestRegist];
+
 }
 - (void)requestRegist{
     NSString *phone =[[self.phoneTF.text stringByReplacingOccurrencesOfString:@" " withString:@""] stringByReplacingOccurrencesOfString:@"-" withString:@""];
-    if ([phone isValidateMobile] !=YES) {
-        [self.view makeToast:@"请输入正确的手机号"];
-        return;
-    }
-    if (self.codeTF.text.length<4) {
-        [self.view makeToast:@"请输入正确的验证码"];
-
-        return;
-    }
+    [self.view makeToast:@"登录成功"];
+    [TTUserInfoManager setUserInfo:@{}];
+    [TTUserInfoManager setLogined:YES];
+    [TTUserInfoManager setAccount:phone];
+    [self performSelector:@selector(registSuccess) withObject:nil afterDelay:1.5];
+    return;
+    
+    
 
     NSMutableDictionary *para = [NSMutableDictionary dictionaryWithCapacity:1];
     [para setObject:phone forKey:@"phone"];
@@ -136,8 +133,8 @@
 }
 //注册成功之后，须登录操作
 - (void)registSuccess{
-//    [self.navigationController popViewControllerAnimated:YES];
-    
+    RootWebViewController *mainVC = [[RootWebViewController alloc] init];
+    [[UIApplication sharedApplication] keyWindow].rootViewController = mainVC;
 }
 
 

@@ -34,7 +34,7 @@
         LoginViewController *mainVC = [[LoginViewController alloc] init];
         self.window.rootViewController = mainVC;
     }
-    [self starNetWorkObservWithOptions:launchOptions];
+//    [self starNetWorkObservWithOptions:launchOptions];
     return YES;
 }
 - (void)starNetWorkObservWithOptions:(NSDictionary *)launchOptions{
