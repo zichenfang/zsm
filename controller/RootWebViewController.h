@@ -10,5 +10,9 @@
 #import "TTVenderHeader.h"
 
 @interface RootWebViewController : UIViewController
+- (void)callJsAlipaySuccess;
+- (void)callJsAlipayfail;
 
+- (void)callJsWechatpaySuccess;
+- (void)callJsWechatpayfail;
 @end

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>测试网页</title>
+</head>
+<body>
+    <button onclick="getUserMobileInfo()" style="width:600px;height: 100px">获取用户信息</button>
+    <button onclick="setUserMobileInfo()" style="width:600px;height: 100px">设置用户信息</button>
+
+    <button onclick="jumpToWechatPay()" style="width:600px;height: 100px">微信支付</button>
+    <button onclick="share()" style="width:600px;height: 100px">分享</button>
+    <button onclick="logOut()" style="width:600px;height: 100px">退出登录</button>
+
+</body>
+<script type="text/javascript">
+	function getUserMobileInfo() {
+        JKEventHandler.callNativeFunction('getUserMobileInfo',{},'ios',function(data){
+                                          alert(data);
+                                          });
+	}
+    function setUserMobileInfo() {
+        JKEventHandler.callNativeFunction('setUserMobileInfo',{phone:'18893939393',token:'SDFJQWEKLJLKSAJFLSDKJF'},'ios',function(data){
+                                          });
+    }
+    function jumpToWechatPay() {
+        JKEventHandler.callNativeFunction('jumpToWechatPay',{'key1':'value1','key2':'value2'},'ios',function(data){
+                                          });
+    }
+    function share() {
+        JKEventHandler.callNativeFunction('share',{'key1':'value1','key2':'value2'},'ios',function(data){
+                                          });
+    }
+    function logOut() {
+        JKEventHandler.callNativeFunction('logOut',{},'ios',function(data){
+                                          });
+    }
+</script>
+</html>

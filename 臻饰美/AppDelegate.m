@@ -9,6 +9,9 @@
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "RootWebViewController.h"
+#import <AlipaySDK/AlipaySDK.h>
+#import "WxApi.h"
+
 // 引入JPush功能所需头文件
 #import "JPUSHService.h"
 // iOS10注册APNs所需头文件
@@ -16,7 +19,7 @@
 #import <UserNotifications/UserNotifications.h>
 #endif
 
-@interface AppDelegate ()
+@interface AppDelegate ()<WXApiDelegate>
 
 @end
 
@@ -26,6 +29,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     [self.window makeKeyAndVisible];
+#warning setLogined YES
+    [TTUserInfoManager setLogined:YES];
     if ([TTUserInfoManager logined] == YES) {
         RootWebViewController *mainVC = [[RootWebViewController alloc] init];
         self.window.rootViewController = mainVC;
@@ -34,7 +39,9 @@
         LoginViewController *mainVC = [[LoginViewController alloc] init];
         self.window.rootViewController = mainVC;
     }
-//    [self starNetWorkObservWithOptions:launchOptions];
+    [self starNetWorkObservWithOptions:launchOptions];
+#warning need wechat appid
+    [WXApi registerApp:@""];
     return YES;
 }
 - (void)starNetWorkObservWithOptions:(NSDictionary *)launchOptions{
@@ -103,5 +110,66 @@
     [JPUSHService handleRemoteNotification:userInfo];
     completionHandler(UIBackgroundFetchResultNewData);
 }
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    if ([url.host isEqualToString:@"safepay"]) {
+        //跳转支付宝钱包进行支付，处理支付结果
+        [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
+            NSLog(@"result = %@",resultDic);
+            NSString *resultStatus = [resultDic objectForKey:@"resultStatus"];
+            //充值成功之后，需要重新获取一下积分信息才可以
+            if ([resultStatus isEqualToString:@"9000"]) {
+                //success
+            }
+            else{
+                //FAILED
+            }
+        }];
+    }
+    return YES;
+}
 
+// NOTE: 9.0以后使用新API接口
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString*, id> *)options
+{
+    if ([url.host isEqualToString:@"safepay"]) {
+        //跳转支付宝钱包进行支付，处理支付结果
+        [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
+            NSLog(@"result = %@",resultDic);
+            NSString *resultStatus = [resultDic objectForKey:@"resultStatus"];
+            //充值成功之后，需要重新获取一下积分信息才可以
+            if ([resultStatus isEqualToString:@"9000"]) {
+                //success
+            }
+            else{
+                //FAILED
+            }
+        }];
+        return YES;
+    }
+    else{
+        return [WXApi handleOpenURL:url delegate:self];
+    }
+}
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
+    return [WXApi handleOpenURL:url delegate:self];
+}
+#pragma -mark 微信支付回调
+-(void)onResp:(BaseResp*)resp{
+    if([resp isKindOfClass:[PayResp class]]){
+        //支付返回结果，实际支付结果需要去微信服务器端查询
+        switch (resp.errCode) {
+            case WXSuccess:{
+
+            }
+                break;
+                
+            default:{
+                NSLog(@"支付失败");
+            }
+                break;
+        }
+        
+    }
+    
+}
 @end
