@@ -157,16 +157,24 @@
         //支付返回结果，实际支付结果需要去微信服务器端查询
         switch (resp.errCode) {
             case WXSuccess:{
-
+                [self.window makeToast:@"支付成功"];
             }
                 break;
+            case WXErrCodeUserCancel:{
+                [self.window makeToast:@"支付取消"];
+            }
+            break;
+            case WXErrCodeAuthDeny:{
+                [self.window makeToast:@"授权失败"];
+            }
+            break;
                 
             default:{
-                NSLog(@"支付失败");
+                [self.window makeToast:@"支付失败"];
             }
                 break;
         }
-        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"payResp" object:resp];
     }
     
 }

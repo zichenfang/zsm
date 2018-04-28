@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AE0534652094C48F00DD837D /* UIViewController+MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE0534632094C48F00DD837D /* UIViewController+MyViewController.m */; };
 		AE4B28AC20886E6B00F4BB08 /* test.html in Resources */ = {isa = PBXBuildFile; fileRef = AE4B28AB20886E6B00F4BB08 /* test.html */; };
 		AE86C6ED20921021004A18F2 /* JKEventHandler+FF.m in Sources */ = {isa = PBXBuildFile; fileRef = AE86C6EB20921021004A18F2 /* JKEventHandler+FF.m */; };
 		AE86C6F020921826004A18F2 /* NSDictionary+Json.m in Sources */ = {isa = PBXBuildFile; fileRef = AE86C6EF20921826004A18F2 /* NSDictionary+Json.m */; };
@@ -39,13 +40,14 @@
 		AEC852B0207CE126008EBE06 /* RootWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC852AD207CE126008EBE06 /* RootWebViewController.m */; };
 		AEC852B4207CE188008EBE06 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC852B2207CE188008EBE06 /* LoginViewController.m */; };
 		AEC852B5207CE188008EBE06 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEC852B3207CE188008EBE06 /* LoginViewController.xib */; };
-		AEC852B8207CEA1A008EBE06 /* UIViewController+MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC852B7207CEA1A008EBE06 /* UIViewController+MyViewController.m */; };
 		B6F16C0CD96670DF47323916 /* libPods-臻饰美.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FDB7BAF23D113C613CB2ADCA /* libPods-臻饰美.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8CB10619ACE51192800356AC /* Pods-臻饰美.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-臻饰美.release.xcconfig"; path = "Pods/Target Support Files/Pods-臻饰美/Pods-臻饰美.release.xcconfig"; sourceTree = "<group>"; };
 		9BF839C99469377E22349313 /* Pods-臻饰美.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-臻饰美.debug.xcconfig"; path = "Pods/Target Support Files/Pods-臻饰美/Pods-臻饰美.debug.xcconfig"; sourceTree = "<group>"; };
+		AE0534632094C48F00DD837D /* UIViewController+MyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MyViewController.m"; sourceTree = "<group>"; };
+		AE0534642094C48F00DD837D /* UIViewController+MyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+MyViewController.h"; sourceTree = "<group>"; };
 		AE4B28AB20886E6B00F4BB08 /* test.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = test.html; sourceTree = "<group>"; };
 		AE86C6EB20921021004A18F2 /* JKEventHandler+FF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JKEventHandler+FF.m"; sourceTree = "<group>"; };
 		AE86C6EC20921021004A18F2 /* JKEventHandler+FF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JKEventHandler+FF.h"; sourceTree = "<group>"; };
@@ -95,8 +97,6 @@
 		AEC852B1207CE188008EBE06 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		AEC852B2207CE188008EBE06 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		AEC852B3207CE188008EBE06 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
-		AEC852B6207CEA1A008EBE06 /* UIViewController+MyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+MyViewController.h"; path = "../../PointsForShop/category/UIViewController+MyViewController.h"; sourceTree = "<group>"; };
-		AEC852B7207CEA1A008EBE06 /* UIViewController+MyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+MyViewController.m"; path = "../../PointsForShop/category/UIViewController+MyViewController.m"; sourceTree = "<group>"; };
 		FDB7BAF23D113C613CB2ADCA /* libPods-臻饰美.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-臻饰美.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -181,8 +181,8 @@
 		AEC85285207CE06D008EBE06 /* category */ = {
 			isa = PBXGroup;
 			children = (
-				AEC852B6207CEA1A008EBE06 /* UIViewController+MyViewController.h */,
-				AEC852B7207CEA1A008EBE06 /* UIViewController+MyViewController.m */,
+				AE0534642094C48F00DD837D /* UIViewController+MyViewController.h */,
+				AE0534632094C48F00DD837D /* UIViewController+MyViewController.m */,
 				AEC85286207CE06D008EBE06 /* NSString+MyCustomString.h */,
 				AEC8528C207CE06D008EBE06 /* NSString+MyCustomString.m */,
 				AEC85287207CE06D008EBE06 /* UIImage+MyCustomImage.h */,
@@ -375,9 +375,9 @@
 				AEC852A7207CE06E008EBE06 /* TTRequestOperationManager.m in Sources */,
 				AEC852A3207CE06E008EBE06 /* UIImage+MyCustomImage.m in Sources */,
 				AE86C6ED20921021004A18F2 /* JKEventHandler+FF.m in Sources */,
-				AEC852B8207CEA1A008EBE06 /* UIViewController+MyViewController.m in Sources */,
 				AEC8527F207CDD0A008EBE06 /* main.m in Sources */,
 				AEC85271207CDD02008EBE06 /* AppDelegate.m in Sources */,
+				AE0534652094C48F00DD837D /* UIViewController+MyViewController.m in Sources */,
 				AEC852A4207CE06E008EBE06 /* NSString+MyCustomString.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

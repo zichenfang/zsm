@@ -11,7 +11,7 @@
 #import "TTVenderHeader.h"
 
 @interface MessageHandlerViewController ()<WKUIDelegate,WKNavigationDelegate,WKScriptMessageHandler>
-@property (strong, nonatomic) IBOutlet WKWebView *webView;
+@property (strong, nonatomic) WKWebView *webView;
 
 @end
 
@@ -38,27 +38,18 @@
     [self.view addSubview:self.webView];
     
 //    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://zsm.qingcangshu.cn"]]];
-    
-    
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"html"];
-    NSString *htmlString = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
+    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://192.168.0.104:8888/index.html"]]];
+    //添加支付通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(payResped:) name:@"payResp" object:nil];
 
-    NSLog(@"htmlString =%@",htmlString);
-    [self.webView loadHTMLString:htmlString baseURL:nil];
-    
-    
-    
-    
 }
 
 - (void)userContentController:(WKUserContentController *)userContentController
       didReceiveScriptMessage:(WKScriptMessage *)message {
-    NSLog(@"message =%@",message);
     NSLog(@"message.name =%@",message.name);
     NSLog(@"message.body =%@",message.body);
-    NSLog(@"message.body.class =%@",[message.body class]);
     
-    [self.view makeToast:[NSString stringWithFormat:@"方法名：%@,\n 参数:%@",message.name,message.body]];
+//    [self.view makeToast:[NSString stringWithFormat:@"方法名：%@,\n 参数:%@",message.name,message.body]];
     
     if ([message.name isEqualToString:@"getUserMobileInfo"]) {
         [self ggetUserMobileInfo];
@@ -73,7 +64,10 @@
     else if ([message.name isEqualToString:@"jumpToWechatPay"]) {
         [self wechatPayWithMessage:message];
     }
-    else if ([message.name isEqualToString:@"logOut"]) {}
+    else if ([message.name isEqualToString:@"logOut"]) {
+        [TTUserInfoManager setAccount:@""];
+        [TTUserInfoManager setPassword:@""];
+    }
 
 
 }
@@ -178,5 +172,21 @@
     req.sign                = [message.body objectForKey:@"sign"];//        签名    ``sign    String(32)    是    C380BEC2BFD727A4B6845133519F3AD6    签名，详见签名生成算法
     [WXApi sendReq:req];
 
+}
+- (void)payResped :(NSNotification *)noti{
+    NSLog(@"payResped =%@",noti.object);
+
+    BaseResp *resp = (BaseResp*)noti.object;
+    NSLog(@"resp.errCode =%d",resp.errCode);
+
+    NSDictionary *javaResp = @{@"status":@"success"};
+
+    if(resp.errCode != WXSuccess){
+        javaResp = @{@"status":@"fail"};
+    }
+    NSString *jsStr = [NSString stringWithFormat:@"wechatPayResp(%@)",javaResp.json_String];
+
+    [self.webView evaluateJavaScript:jsStr completionHandler:^(id _Nullable data, NSError * _Nullable error) {
+    }];
 }
 @end
