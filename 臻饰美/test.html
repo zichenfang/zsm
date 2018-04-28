@@ -1,38 +1,27 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>测试网页</title>
-</head>
-<body>
-    <button onclick="getUserMobileInfo()" style="width:600px;height: 100px">获取用户信息</button>
-    <button onclick="setUserMobileInfo()" style="width:600px;height: 100px">设置用户信息</button>
+    <head>
+        <title>测试网页</title>
+        <meta charset="utf-8">
+            <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js">
+                </script>
+            <script>
+                //web端获取用户信息
+                $(document).ready(function(){
+                                  window.webkit.messageHandlers.share.postMessage({});
+                                  });
+                </script>
+    </head>
+    <body>
+        
+    </body>
+    
+    <script type="text/javascript">
+        //原生将用户信息返回给web端
+        function userInfoDidReceived(userInfo){
+            alert(userInfo);
+        }
 
-    <button onclick="jumpToWechatPay()" style="width:600px;height: 100px">微信支付</button>
-    <button onclick="share()" style="width:600px;height: 100px">分享</button>
-    <button onclick="logOut()" style="width:600px;height: 100px">退出登录</button>
+    </script>
 
-</body>
-<script type="text/javascript">
-	function getUserMobileInfo() {
-        JKEventHandler.callNativeFunction('getUserMobileInfo',{},'ios',function(data){
-                                          alert(data);
-                                          });
-	}
-    function setUserMobileInfo() {
-        JKEventHandler.callNativeFunction('setUserMobileInfo',{phone:'18893939393',token:'SDFJQWEKLJLKSAJFLSDKJF'},'ios',function(data){
-                                          });
-    }
-    function jumpToWechatPay() {
-        JKEventHandler.callNativeFunction('jumpToWechatPay',{'key1':'value1','key2':'value2'},'ios',function(data){
-                                          });
-    }
-    function share() {
-        JKEventHandler.callNativeFunction('share',{'key1':'value1','key2':'value2'},'ios',function(data){
-                                          });
-    }
-    function logOut() {
-        JKEventHandler.callNativeFunction('logOut',{},'ios',function(data){
-                                          });
-    }
-</script>
 </html>

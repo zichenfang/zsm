@@ -19,6 +19,8 @@
 #import <UserNotifications/UserNotifications.h>
 #endif
 
+#import "MessageHandlerViewController.h"
+
 @interface AppDelegate ()<WXApiDelegate>
 
 @end
@@ -29,19 +31,13 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     [self.window makeKeyAndVisible];
-#warning setLogined YES
-    [TTUserInfoManager setLogined:YES];
-    if ([TTUserInfoManager logined] == YES) {
-        RootWebViewController *mainVC = [[RootWebViewController alloc] init];
-        self.window.rootViewController = mainVC;
-    }
-    else{
-        LoginViewController *mainVC = [[LoginViewController alloc] init];
-        self.window.rootViewController = mainVC;
-    }
+//    RootWebViewController *mainVC = [[RootWebViewController alloc] init];
+    MessageHandlerViewController *mainVC = [[MessageHandlerViewController alloc] init];
+    
+    self.window.rootViewController = mainVC;
+
     [self starNetWorkObservWithOptions:launchOptions];
-#warning need wechat appid
-    [WXApi registerApp:@""];
+    [WXApi registerApp:@"wx00f0bfcec76454ce"];
     return YES;
 }
 - (void)starNetWorkObservWithOptions:(NSDictionary *)launchOptions{
@@ -125,6 +121,9 @@
             }
         }];
     }
+    else{
+        return [WXApi handleOpenURL:url delegate:self];
+    }
     return YES;
 }
 
@@ -136,7 +135,6 @@
         [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
             NSLog(@"result = %@",resultDic);
             NSString *resultStatus = [resultDic objectForKey:@"resultStatus"];
-            //充值成功之后，需要重新获取一下积分信息才可以
             if ([resultStatus isEqualToString:@"9000"]) {
                 //success
             }

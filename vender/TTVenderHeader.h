@@ -18,6 +18,8 @@
 #import "ProgressHUD.h"
 #import "UIViewController+MyViewController.h"
 #import "Toast.h"
+#import "WxApi.h"
+
 
 typedef void (^TTBlock)(NSDictionary *info);
 

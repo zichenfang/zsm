@@ -33,6 +33,10 @@
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
 			<string>wechatpay</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>wx00f0bfcec76454ce</string>
+			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>

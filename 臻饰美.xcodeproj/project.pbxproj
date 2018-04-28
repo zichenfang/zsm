@@ -10,6 +10,7 @@
 		AE4B28AC20886E6B00F4BB08 /* test.html in Resources */ = {isa = PBXBuildFile; fileRef = AE4B28AB20886E6B00F4BB08 /* test.html */; };
 		AE86C6ED20921021004A18F2 /* JKEventHandler+FF.m in Sources */ = {isa = PBXBuildFile; fileRef = AE86C6EB20921021004A18F2 /* JKEventHandler+FF.m */; };
 		AE86C6F020921826004A18F2 /* NSDictionary+Json.m in Sources */ = {isa = PBXBuildFile; fileRef = AE86C6EF20921826004A18F2 /* NSDictionary+Json.m */; };
+		AE86C6F42093F3EC004A18F2 /* MessageHandlerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE86C6F22093F3EC004A18F2 /* MessageHandlerViewController.m */; };
 		AE91E463207EF2B50015C27F /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AE91E462207EF2B50015C27F /* libc++.tbd */; };
 		AE91E465207EF2C00015C27F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE91E464207EF2C00015C27F /* SystemConfiguration.framework */; };
 		AE91E467207EF2C80015C27F /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE91E466207EF2C80015C27F /* CoreTelephony.framework */; };
@@ -50,6 +51,8 @@
 		AE86C6EC20921021004A18F2 /* JKEventHandler+FF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JKEventHandler+FF.h"; sourceTree = "<group>"; };
 		AE86C6EE20921826004A18F2 /* NSDictionary+Json.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Json.h"; sourceTree = "<group>"; };
 		AE86C6EF20921826004A18F2 /* NSDictionary+Json.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Json.m"; sourceTree = "<group>"; };
+		AE86C6F12093F3EC004A18F2 /* MessageHandlerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageHandlerViewController.h; sourceTree = "<group>"; };
+		AE86C6F22093F3EC004A18F2 /* MessageHandlerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageHandlerViewController.m; sourceTree = "<group>"; };
 		AE91E462207EF2B50015C27F /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		AE91E464207EF2C00015C27F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		AE91E466207EF2C80015C27F /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -217,6 +220,8 @@
 				AEC852AE207CE126008EBE06 /* RootWebViewController.h */,
 				AEC852AD207CE126008EBE06 /* RootWebViewController.m */,
 				AEC852AC207CE126008EBE06 /* RootWebViewController.xib */,
+				AE86C6F12093F3EC004A18F2 /* MessageHandlerViewController.h */,
+				AE86C6F22093F3EC004A18F2 /* MessageHandlerViewController.m */,
 				AE86C6EC20921021004A18F2 /* JKEventHandler+FF.h */,
 				AE86C6EB20921021004A18F2 /* JKEventHandler+FF.m */,
 			);
@@ -364,6 +369,7 @@
 				AEC852B0207CE126008EBE06 /* RootWebViewController.m in Sources */,
 				AEC852B4207CE188008EBE06 /* LoginViewController.m in Sources */,
 				AEC852A2207CE06E008EBE06 /* NSDate+MyDate.m in Sources */,
+				AE86C6F42093F3EC004A18F2 /* MessageHandlerViewController.m in Sources */,
 				AEC852A6207CE06E008EBE06 /* UIColor+MyColor.m in Sources */,
 				AEC852A8207CE06E008EBE06 /* TTUserInfoManager.m in Sources */,
 				AEC852A7207CE06E008EBE06 /* TTRequestOperationManager.m in Sources */,

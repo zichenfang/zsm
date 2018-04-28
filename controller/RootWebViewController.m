@@ -37,20 +37,20 @@
     // 注入JS对象名称AppModel，当JS通过AppModel来调用时，
     // 我们可以在WKScriptMessageHandler代理中接收到
     [config.userContentController addScriptMessageHandler:[JKEventHandler shareInstance] name:EventHandler];
+    [config.userContentController addScriptMessageHandler:self name:@"test"];
 
     self.webView = [[WKWebView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) configuration:config];
     self.webView.UIDelegate = self;
     [self.view addSubview:self.webView];
 
-    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://zsm.qingcangshu.cn"]]];
+//    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://zsm.qingcangshu.cn"]]];
     
     
-    
-//    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"html"];
-//    NSString *htmlString = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
-//
-//    NSLog(@"htmlString =%@",htmlString);
-//    [self.webView loadHTMLString:htmlString baseURL:nil];
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"html"];
+    NSString *htmlString = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
+
+    NSLog(@"htmlString =%@",htmlString);
+    [self.webView loadHTMLString:htmlString baseURL:nil];
     
     
     
