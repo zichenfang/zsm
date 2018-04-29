@@ -24,7 +24,6 @@
     config.preferences.javaScriptEnabled = YES;
     config.preferences.javaScriptCanOpenWindowsAutomatically = YES;
     
-    
     config.userContentController = [[WKUserContentController alloc] init];
     
     [config.userContentController addScriptMessageHandler:self name:@"getUserMobileInfo"];
@@ -37,12 +36,17 @@
     self.webView.UIDelegate = self;
     [self.view addSubview:self.webView];
     
-//    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://zsm.qingcangshu.cn"]]];
-    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://192.168.0.104:8888/index.html"]]];
+    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://zsm.qingcangshu.cn"]]];
+//    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://192.168.0.104:8888/index.html"]]];
     //添加支付通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(payResped:) name:@"payResp" object:nil];
 
 }
+    - (void)viewDidAppear:(BOOL)animated{
+        [super viewDidAppear:animated];
+        [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://zsm.qingcangshu.cn"]]];
+
+    }
 
 - (void)userContentController:(WKUserContentController *)userContentController
       didReceiveScriptMessage:(WKScriptMessage *)message {

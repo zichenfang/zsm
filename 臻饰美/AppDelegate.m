@@ -36,8 +36,8 @@
     
     self.window.rootViewController = mainVC;
 
-    [self starNetWorkObservWithOptions:launchOptions];
-    [WXApi registerApp:@"wx00f0bfcec76454ce"];
+//    [self starNetWorkObservWithOptions:launchOptions];
+//    [WXApi registerApp:@"wx00f0bfcec76454ce"];
     return YES;
 }
 - (void)starNetWorkObservWithOptions:(NSDictionary *)launchOptions{
@@ -51,6 +51,8 @@
             NSLog(@"未知网络");
         }else if (status == AFNetworkReachabilityStatusReachableViaWWAN||status == AFNetworkReachabilityStatusReachableViaWiFi){
             NSLog(@"WAN WIFI");
+            [WXApi registerApp:@"wx00f0bfcec76454ce"];
+
 //            [self prepareAPNs];
 //            [self prepareJPushWithOptions:launchOptions];
         }
@@ -100,12 +102,12 @@
     //Optional
     NSLog(@"did Fail To Register For Remote Notifications With Error: %@", error);
 }
-//MARK:处理APNs通知回调方法
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
-    // Required, iOS 7 Support
-    [JPUSHService handleRemoteNotification:userInfo];
-    completionHandler(UIBackgroundFetchResultNewData);
-}
+////MARK:处理APNs通知回调方法
+//- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+//    // Required, iOS 7 Support
+//    [JPUSHService handleRemoteNotification:userInfo];
+//    completionHandler(UIBackgroundFetchResultNewData);
+//}
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
     if ([url.host isEqualToString:@"safepay"]) {
         //跳转支付宝钱包进行支付，处理支付结果
