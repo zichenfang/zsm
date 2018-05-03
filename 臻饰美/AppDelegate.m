@@ -36,8 +36,7 @@
     
     self.window.rootViewController = mainVC;
 
-//    [self starNetWorkObservWithOptions:launchOptions];
-//    [WXApi registerApp:@"wx00f0bfcec76454ce"];
+    [self starNetWorkObservWithOptions:launchOptions];
     return YES;
 }
 - (void)starNetWorkObservWithOptions:(NSDictionary *)launchOptions{
@@ -155,6 +154,7 @@
 }
 #pragma -mark 微信支付回调
 -(void)onResp:(BaseResp*)resp{
+    NSLog(@"onResp :%@ %d",resp,resp.errCode);
     if([resp isKindOfClass:[PayResp class]]){
         //支付返回结果，实际支付结果需要去微信服务器端查询
         switch (resp.errCode) {
@@ -177,6 +177,28 @@
                 break;
         }
         [[NSNotificationCenter defaultCenter] postNotificationName:@"payResp" object:resp];
+    }
+    else if ([resp isKindOfClass:[SendAuthResp class]]){
+        switch (resp.errCode) {
+            case WXSuccess:{
+                [self.window makeToast:@"登录成功"];
+            }
+                break;
+            case WXErrCodeUserCancel:{
+                [self.window makeToast:@"登录取消"];
+            }
+                break;
+            case WXErrCodeAuthDeny:{
+                [self.window makeToast:@"授权失败"];
+            }
+                break;
+                
+            default:{
+                [self.window makeToast:@"授权失败"];
+            }
+                break;
+        }
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"authResp" object:resp];
     }
     
 }

@@ -31,6 +31,10 @@
     [config.userContentController addScriptMessageHandler:self name:@"share"];
     [config.userContentController addScriptMessageHandler:self name:@"jumpToWechatPay"];
     [config.userContentController addScriptMessageHandler:self name:@"logOut"];
+    [config.userContentController addScriptMessageHandler:self name:@"getWechatUserInfo"];
+
+    
+    
 
     self.webView = [[WKWebView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) configuration:config];
     self.webView.UIDelegate = self;
@@ -38,15 +42,13 @@
     
     [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://zsm.qingcangshu.cn"]]];
 //    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://192.168.0.104:8888/index.html"]]];
+//    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.qq.com/"]]];
+
     //添加支付通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(payResped:) name:@"payResp" object:nil];
-
+    //添加微信登录通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(authResped:) name:@"authResp" object:nil];
 }
-    - (void)viewDidAppear:(BOOL)animated{
-        [super viewDidAppear:animated];
-        [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://zsm.qingcangshu.cn"]]];
-
-    }
 
 - (void)userContentController:(WKUserContentController *)userContentController
       didReceiveScriptMessage:(WKScriptMessage *)message {
@@ -71,8 +73,11 @@
     else if ([message.name isEqualToString:@"logOut"]) {
         [TTUserInfoManager setAccount:@""];
         [TTUserInfoManager setPassword:@""];
+        NSLog(@"phone:%@ --%@ ",[TTUserInfoManager account],[TTUserInfoManager token]);
     }
-
+    else if ([message.name isEqualToString:@"getWechatUserInfo"]) {
+        [self ggetWechatInfo];
+    }
 
 }
 
@@ -86,6 +91,16 @@
     [self presentViewController:alert animated:YES completion:nil];
     NSLog(@"alert message:%@",message);
 }
+//MARK:微信登录
+- (void)ggetWechatInfo{
+    //构造SendAuthReq结构体
+    SendAuthReq* req =[[SendAuthReq alloc]init];
+    req.scope = @"snsapi_userinfo";
+    req.state = @"zsm_jt";
+    //第三方向微信终端发送一个SendAuthReq消息结构
+    [WXApi sendReq:req];
+}
+
 //MARK:获取信息
 - (void)ggetUserMobileInfo{
     NSString *phone = [TTUserInfoManager account];
@@ -100,6 +115,9 @@
     NSString *jsStr = [NSString stringWithFormat:@"userInfoDidReceived(%@)",dic.json_String];
     [self.webView evaluateJavaScript:jsStr completionHandler:^(id _Nullable data, NSError * _Nullable error) {
     }];
+    NSLog(@"evaluateJavaScript :%@",jsStr);
+    [self ggetWechatInfo];
+
 
 }
     //MARK:设置信息
@@ -192,5 +210,35 @@
 
     [self.webView evaluateJavaScript:jsStr completionHandler:^(id _Nullable data, NSError * _Nullable error) {
     }];
+    NSLog(@"evaluateJavaScript :%@",jsStr);
 }
+- (void)authResped :(NSNotification *)noti{
+    NSLog(@"authResped =%@",noti.object);
+    
+    SendAuthResp *resp = (SendAuthResp*)noti.object;
+    NSLog(@"resp.errCode =%d",resp.errCode);
+    NSMutableDictionary *javaResp = [NSMutableDictionary dictionaryWithCapacity:4];
+    if(resp.errCode == WXSuccess){
+        if (resp.code) {
+            [javaResp setObject:resp.code forKey:@"code"];
+        }
+        if (resp.state) {
+            [javaResp setObject:resp.state forKey:@"state"];
+        }
+        if (resp.lang) {
+            [javaResp setObject:resp.lang forKey:@"lang"];
+        }
+        if (resp.country) {
+            [javaResp setObject:resp.country forKey:@"country"];
+        }
+    }
+
+    NSString *jsStr = [NSString stringWithFormat:@"setWechatUserInfo(%@)",javaResp.json_String];
+    
+    [self.webView evaluateJavaScript:jsStr completionHandler:^(id _Nullable data, NSError * _Nullable error) {
+    }];
+    NSLog(@"evaluateJavaScript :%@",jsStr);
+}
+
+
 @end
