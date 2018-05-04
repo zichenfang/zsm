@@ -69,6 +69,7 @@
 		AE91E481207F64910015C27F /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
 		AE91E484207F65030015C27F /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
 		AE91E485207F65030015C27F /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
+		AEC583D7209B6429003F314A /* 臻饰美.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "臻饰美.entitlements"; sourceTree = "<group>"; };
 		AEC8526C207CDD01008EBE06 /* 臻饰美.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "臻饰美.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEC8526F207CDD02008EBE06 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AEC85270207CDD02008EBE06 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -167,6 +168,7 @@
 		AEC8526E207CDD01008EBE06 /* 臻饰美 */ = {
 			isa = PBXGroup;
 			children = (
+				AEC583D7209B6429003F314A /* 臻饰美.entitlements */,
 				AEC8526F207CDD02008EBE06 /* AppDelegate.h */,
 				AEC85270207CDD02008EBE06 /* AppDelegate.m */,
 				AE4B28AB20886E6B00F4BB08 /* test.html */,
@@ -281,6 +283,11 @@
 				TargetAttributes = {
 					AEC8526B207CDD01008EBE06 = {
 						CreatedOnToolsVersion = 9.3;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -511,6 +518,7 @@
 			baseConfigurationReference = 9BF839C99469377E22349313 /* Pods-臻饰美.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "臻饰美/臻饰美.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U44QXKV53Z;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -546,6 +554,7 @@
 			baseConfigurationReference = 8CB10619ACE51192800356AC /* Pods-臻饰美.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "臻饰美/臻饰美.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U44QXKV53Z;
 				FRAMEWORK_SEARCH_PATHS = (

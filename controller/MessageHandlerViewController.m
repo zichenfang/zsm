@@ -12,6 +12,10 @@
 
 @interface MessageHandlerViewController ()<WKUIDelegate,WKNavigationDelegate,WKScriptMessageHandler>
 @property (strong, nonatomic) WKWebView *webView;
+@property (strong, nonatomic) NSString *access_token;
+@property (strong, nonatomic) NSString *refresh_token;
+@property (strong, nonatomic) NSString *openid;
+@property (strong, nonatomic) NSString *unionid;
 
 @end
 
@@ -33,23 +37,24 @@
     [config.userContentController addScriptMessageHandler:self name:@"logOut"];
     [config.userContentController addScriptMessageHandler:self name:@"getWechatUserInfo"];
 
-    
-    
 
     self.webView = [[WKWebView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) configuration:config];
     self.webView.UIDelegate = self;
     [self.view addSubview:self.webView];
-    
-    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://zsm.qingcangshu.cn"]]];
-//    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://192.168.0.104:8888/index.html"]]];
-//    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.qq.com/"]]];
+    [self networkvaliable];
 
     //添加支付通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(payResped:) name:@"payResp" object:nil];
     //添加微信登录通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(authResped:) name:@"authResp" object:nil];
-}
+    //添加网络通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkvaliable) name:@"networkvaliable" object:nil];
 
+}
+- (void)networkvaliable{
+    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://zsm.qingcangshu.cn"]]];
+    //    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://192.168.0.104:8888/index.html"]]];
+}
 - (void)userContentController:(WKUserContentController *)userContentController
       didReceiveScriptMessage:(WKScriptMessage *)message {
     NSLog(@"message.name =%@",message.name);
@@ -59,6 +64,8 @@
     
     if ([message.name isEqualToString:@"getUserMobileInfo"]) {
         [self ggetUserMobileInfo];
+//#warning delete this
+//        [self ggetWechatInfo];
     }
     else if ([message.name isEqualToString:@"setUserMobileInfo"]) {
         [self ssetUserMobileInfoWithMessage:message];
@@ -78,7 +85,6 @@
     else if ([message.name isEqualToString:@"getWechatUserInfo"]) {
         [self ggetWechatInfo];
     }
-
 }
 
 
@@ -116,8 +122,6 @@
     [self.webView evaluateJavaScript:jsStr completionHandler:^(id _Nullable data, NSError * _Nullable error) {
     }];
     NSLog(@"evaluateJavaScript :%@",jsStr);
-    [self ggetWechatInfo];
-
 
 }
     //MARK:设置信息
@@ -216,29 +220,65 @@
     NSLog(@"authResped =%@",noti.object);
     
     SendAuthResp *resp = (SendAuthResp*)noti.object;
-    NSLog(@"resp.errCode =%d",resp.errCode);
-    NSMutableDictionary *javaResp = [NSMutableDictionary dictionaryWithCapacity:4];
-    if(resp.errCode == WXSuccess){
-        if (resp.code) {
-            [javaResp setObject:resp.code forKey:@"code"];
-        }
-        if (resp.state) {
-            [javaResp setObject:resp.state forKey:@"state"];
-        }
-        if (resp.lang) {
-            [javaResp setObject:resp.lang forKey:@"lang"];
-        }
-        if (resp.country) {
-            [javaResp setObject:resp.country forKey:@"country"];
-        }
-    }
-
-    NSString *jsStr = [NSString stringWithFormat:@"setWechatUserInfo(%@)",javaResp.json_String];
-    
-    [self.webView evaluateJavaScript:jsStr completionHandler:^(id _Nullable data, NSError * _Nullable error) {
-    }];
-    NSLog(@"evaluateJavaScript :%@",jsStr);
+    [self obtainAccess_tokenWithCode:resp.code];
 }
+- (void)obtainAccess_tokenWithCode :(NSString *)code{
+    NSMutableDictionary *para = [NSMutableDictionary dictionary];
+    if (code) {
+        [para setObject:code forKey:@"code"];
+    }
+    [para setObject:WechatAppID forKey:@"appid"];
+    [para setObject:WechatAppSecret forKey:@"secret"];
+    [para setObject:@"authorization_code" forKey:@"grant_type"];
+    [TTRequestOperationManager GET:@"https://api.weixin.qq.com/sns/oauth2/access_token?" Parameters:para Success:^(NSDictionary *responseJsonObject) {
+        NSLog(@"%@",responseJsonObject);
+        NSString *errcode = [responseJsonObject objectForKey:@"errcode"];
+        if (errcode) {
+            [self.view makeToast:@"用户授权失败"];
+        }
+        else{
+            self.access_token = [responseJsonObject string_ForKey:@"access_token"];
+            self.refresh_token = [responseJsonObject string_ForKey:@"refresh_token"];
+            self.openid = [responseJsonObject string_ForKey:@"openid"];
+            self.unionid = [responseJsonObject string_ForKey:@"unionid"];
+            [self obtainUserInfo];
+        }
+    } Failure:^(NSError *error) {
+        
+    }];
+}
+- (void)obtainUserInfo{
+    NSMutableDictionary *para = [NSMutableDictionary dictionary];
+    if (self.access_token) {
+        [para setObject:self.access_token forKey:@"access_token"];
+    }
+    if (self.openid) {
+        [para setObject:self.openid forKey:@"openid"];
+    }
+    [TTRequestOperationManager GET:@"https://api.weixin.qq.com/sns/userinfo?" Parameters:para Success:^(NSDictionary *responseJsonObject) {
+        NSLog(@"%@",responseJsonObject);
+        NSString *errcode = [responseJsonObject objectForKey:@"errcode"];
+        if (errcode) {
+            [self.view makeToast:@"用户信息获取失败"];
+        }
+        else{
+            NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithDictionary:responseJsonObject];
+            if ([TTUserInfoManager jPushRegistID]) {
+                [userInfo setObject:[TTUserInfoManager jPushRegistID] forKey:@"jPushRegistID"];
+            }
+            if ([TTUserInfoManager deviceToken]) {
+                [userInfo setObject:[TTUserInfoManager deviceToken] forKey:@"deviceToken"];
+            }
+            NSLog(@"userInfo =%@",userInfo);
+            NSString *jsStr = [NSString stringWithFormat:@"setWechatUserInfo(%@)",userInfo.json_String];
+            [self.webView evaluateJavaScript:jsStr completionHandler:^(id _Nullable data, NSError * _Nullable error) {
+            }];
+            NSLog(@"evaluateJavaScript :%@",jsStr);
+        }
+    } Failure:^(NSError *error) {
+        
+    }];
 
+}
 
 @end

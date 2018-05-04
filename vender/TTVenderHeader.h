@@ -42,6 +42,9 @@ typedef void (^TTBlock)(NSDictionary *info);
 #define kNoti_AliPaySuccess @"NNNNOTI_005"
 /*支付失败*/
 #define kNoti_AliPayFailed @"NNNNOTI_006"
-
+//微信配置信息
+#define WechatAppID @"wx00f0bfcec76454ce"
+#define WechatAppSecret @"2f575403727fe4971d2989122bd9cda5"
+#define JGPushAppkey @"e57ab07af7d5a8dbb2f61ddb"
 
 #endif /* TTVenderHeader_h */
