@@ -13,5 +13,7 @@ target "臻饰美" do
 #    pod 'UMCSecurityPlugins'
 #    pod 'UMCShare/Social/WeChat'
     pod 'JKWKWebViewHandler', '~> 0.2.3'    
+    pod 'Pgyer'
+    pod 'PgyUpdate'
 
 end

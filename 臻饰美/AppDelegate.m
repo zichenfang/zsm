@@ -43,6 +43,12 @@
 
     [self starNetWorkObservWithOptions:launchOptions];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkDidReceiveMessage:) name:kJPFNetworkDidReceiveMessageNotification object:nil];
+    //启动基本SDK
+    [[PgyManager sharedPgyManager] startManagerWithAppId:PGY_APP_ID];
+    //启动更新检查SDK
+    [[PgyUpdateManager sharedPgyManager] startManagerWithAppId:PGY_APP_ID];
+    [[PgyManager sharedPgyManager] setEnableFeedback:NO];
+    [[PgyUpdateManager sharedPgyManager] checkUpdate];
 
     return YES;
 }
@@ -59,7 +65,7 @@
         }else if (status == AFNetworkReachabilityStatusReachableViaWWAN||status == AFNetworkReachabilityStatusReachableViaWiFi){
             NSLog(@"WAN WIFI");
             [WXApi registerApp:WechatAppID];
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"networkvaliable" object:nil];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshWeb" object:nil];
             [self prepareAPNs];
             [self prepareJPushWithOptions:launchOptions];
         }
@@ -126,6 +132,7 @@
         else{
             NSLog(@"registrationID获取失败，code：%d",resCode);
         }
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshWeb" object:nil];
     }];
     
 }
@@ -172,8 +179,6 @@
     if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
         [JPUSHService handleRemoteNotification:userInfo];
         NSLog(@"iOS10 前台收到远程通知:%@", userInfo);
-        
-        
     }
     else {
         // 判断为本地通知

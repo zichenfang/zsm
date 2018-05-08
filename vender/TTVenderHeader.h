@@ -46,5 +46,10 @@ typedef void (^TTBlock)(NSDictionary *info);
 #define WechatAppID @"wx00f0bfcec76454ce"
 #define WechatAppSecret @"2f575403727fe4971d2989122bd9cda5"
 #define JGPushAppkey @"e57ab07af7d5a8dbb2f61ddb"
+//李刚蒲公英appkey
+//#define PGY_APP_ID @"9a18751cbe9ccd4454c02aef9e4ced8a"
+//王瑞普蒲公英
+#define PGY_APP_ID @"3bcc45b4c4c9da99ff7b33cc4ca77bc3"
+
 
 #endif /* TTVenderHeader_h */

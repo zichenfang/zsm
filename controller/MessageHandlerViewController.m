@@ -41,17 +41,17 @@
     self.webView = [[WKWebView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) configuration:config];
     self.webView.UIDelegate = self;
     [self.view addSubview:self.webView];
-    [self networkvaliable];
+//    [self refreshWeb];
 
     //添加支付通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(payResped:) name:@"payResp" object:nil];
     //添加微信登录通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(authResped:) name:@"authResp" object:nil];
     //添加网络通知
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkvaliable) name:@"networkvaliable" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshWeb) name:@"refreshWeb" object:nil];
 
 }
-- (void)networkvaliable{
+- (void)refreshWeb{
     [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://zsm.qingcangshu.cn"]]];
     //    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://192.168.0.104:8888/index.html"]]];
 }
@@ -117,8 +117,21 @@
     if (token == nil) {
         token  =@"";
     }
-    NSDictionary *dic = @{@"phone":phone,@"token":token};
-    NSString *jsStr = [NSString stringWithFormat:@"userInfoDidReceived(%@)",dic.json_String];
+    NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
+    if (phone) {
+        [userInfo setObject:phone forKey:@"phone"];
+    }
+    if (token) {
+        [userInfo setObject:token forKey:@"token"];
+    }
+    if ([TTUserInfoManager jPushRegistID]) {
+        [userInfo setObject:[TTUserInfoManager jPushRegistID] forKey:@"jPushRegistID"];
+    }
+    if ([TTUserInfoManager deviceToken]) {
+        [userInfo setObject:[TTUserInfoManager deviceToken] forKey:@"deviceToken"];
+    }
+    
+    NSString *jsStr = [NSString stringWithFormat:@"userInfoDidReceived(%@)",userInfo.json_String];
     [self.webView evaluateJavaScript:jsStr completionHandler:^(id _Nullable data, NSError * _Nullable error) {
     }];
     NSLog(@"evaluateJavaScript :%@",jsStr);

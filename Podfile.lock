@@ -19,6 +19,8 @@ PODS:
   - JKWKWebViewHandler (0.2.3)
   - JPush (3.0.8):
     - JCore (~> 1.1.7)
+  - Pgyer (2.8.9)
+  - PgyUpdate (1.5)
   - ProgressHUD (2.51)
   - Toast (4.0.0)
   - TPKeyboardAvoiding (1.3.1)
@@ -29,6 +31,8 @@ DEPENDENCIES:
   - FFFJsonKillNull (~> 1.1.0)
   - JKWKWebViewHandler (~> 0.2.3)
   - JPush (~> 3.0.6)
+  - Pgyer
+  - PgyUpdate
   - ProgressHUD (~> 2.51)
   - Toast (~> 4.0.0)
   - TPKeyboardAvoiding (= 1.3.1)
@@ -41,6 +45,8 @@ SPEC REPOS:
     - JCore
     - JKWKWebViewHandler
     - JPush
+    - Pgyer
+    - PgyUpdate
     - ProgressHUD
     - Toast
     - TPKeyboardAvoiding
@@ -52,11 +58,13 @@ SPEC CHECKSUMS:
   JCore: f7459c81c135281a874a6beafdd321666adcc834
   JKWKWebViewHandler: 9b8eab474e76e96e17ac359d2fb9bf1eceeded62
   JPush: 9574d072cc37e93fa293ba69b43ce763c440943a
+  Pgyer: 830654e51e23f754cce5d8b3ea9ba72be68452eb
+  PgyUpdate: bad71685b91bba4aa520b7fe29356a476700fdf2
   ProgressHUD: 54b4c2fa202bf3da7dddc1c698ae4e6376333bd9
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
   TPKeyboardAvoiding: 0d6af20e95e2850f4c621841225b59ec7d8dd852
   WechatOpenSDK: 676feec516a11173eafd1fe64b10d27babf28701
 
-PODFILE CHECKSUM: 84f5dfacf43769f0252ba2c5602093dcf057425a
+PODFILE CHECKSUM: c50c94c63c91cd8433fc6ea1abe6a86632ba1841
 
 COCOAPODS: 1.5.0

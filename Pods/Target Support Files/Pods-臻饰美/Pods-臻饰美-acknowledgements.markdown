@@ -260,6 +260,16 @@ THE SOFTWARE.
 
 Copyright jpush.cn
 
+## PgyUpdate
+
+Copyright 2015 pgyer.com. All rights reserved.
+
+
+## Pgyer
+
+Copyright 2017 pgyer.com. All rights reserved.
+
+
 ## ProgressHUD
 
 

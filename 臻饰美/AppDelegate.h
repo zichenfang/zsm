@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <PgySDK/PgyManager.h>
+#import <PgyUpdate/PgyUpdateManager.h>
 
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
